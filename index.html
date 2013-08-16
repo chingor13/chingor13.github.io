@@ -8,7 +8,9 @@ title: code.chingr.com
   <ul class="projects">
     {% for post in site.categories.project %}
       <li>
-        <a href="{{ post.url }}">{{ post.title }}</a>
+        <a href="{% if post.url_override %}{{ post.url_override}}{% else %}{{ post.url }}{% endif %}">
+          {{ post.title }}
+        </a>
         <p>{{ post.excerpt }}</p>
       </li>
     {% endfor %}
