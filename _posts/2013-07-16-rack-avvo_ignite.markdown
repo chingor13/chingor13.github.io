@@ -4,6 +4,7 @@ title:  "Rack Avvo Ingite"
 date:   2013-08-14 16:12:32
 tags:   rack-middleware ruby
 category: project
+github: rack-avvo_ignite
 ---
 
 This Rack middleware will easily integrate your Rack-based app with [Avvo Ignite's][ignite] website tracking feature.

@@ -23,6 +23,14 @@
           <h2>Collection of my Open Source projects</h2>
         </header>
 
+        {% if page.github %}
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/chingor13/{{page.github}}/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/chingor13/{{page.github}}/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/chingor13/{{page.github}}" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+        {% endif %}
+
         <hr>
 
         <section id="main_content">

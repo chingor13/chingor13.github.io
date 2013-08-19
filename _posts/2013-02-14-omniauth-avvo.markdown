@@ -4,6 +4,7 @@ title:  "OmniAuth Avvo"
 date:   2013-08-14 16:12:32
 tags:   omniauth-strategy ruby
 category: project
+github: omniauth-avvo
 ---
 
 [Avvo.com][avvo] strategy for [OmniAuth][omniauth]

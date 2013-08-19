@@ -4,6 +4,7 @@ title:  "Docusigner"
 date:   2013-08-14 00:12:32
 tags:   jquery plugin
 category: project
+github: docusigner
 ---
 
 This gem is meant to be a simple ActiveResource based interface to DocuSign's REST api.  Where applicable, objects know about their association relationships.
@@ -29,29 +30,37 @@ You can use either the X-DocuSign-Authentication header or an OAuth2 bearer toke
 
 ### X-DocuSign-Authentication
 
-    Docusigner::Base.authentication = {
-      :username => "your_username_here",
-      :password => "your_password_here",
-      :integrator_key => "your_integrator_key_here"
-    }
+```
+Docusigner::Base.authentication = {
+  :username => "your_username_here",
+  :password => "your_password_here",
+  :integrator_key => "your_integrator_key_here"
+}
+```
     
 ### OAuth2
 
-    Docusigner::Base.token = "your_api_token"
+```
+Docusigner::Base.token = "your_api_token"
+```
     
 Additionally, you can easily request (or revoke) a token through the API.
 
-  # request an OAuth2 token
-  token = Docusigner::Oauth2.token("username", "password", "integrator_key")
+```
+# request an OAuth2 token
+token = Docusigner::Oauth2.token("username", "password", "integrator_key")
   
-  # revoke an OAuth2 token
-  Docusigner::Oauth2.revoke("token")
+# revoke an OAuth2 token
+Docusigner::Oauth2.revoke("token")
+```
   
 ### Domain
 
 By default, the API points to the development platform at https://demo.docusign.net.  Changing to the live site is simple:
 
-  Docusigner::Base.site = "https://www.docusign.net/restapi/v2"
+```
+Docusigner::Base.site = "https://www.docusign.net/restapi/v2"
+```
   
 ## Usage
 
@@ -61,49 +70,53 @@ Once you've configured the client, accessing resources is easy.  This client is 
 
 #### Fetch basic account information
 
-  # find the account
-  account = Docusigner::Account.find(1234)
+```
+# find the account
+account = Docusigner::Account.find(1234)
   
-  # access basic attributes
-  account.id
-  => 1234
-  account.name
-  => "My account name" 
+# access basic attributes
+account.id
+=> 1234
+account.name
+=> "My account name" 
 
-  # list templates
-  account.templates
-  => [#<Docusigner::Template>, #<Docusigner::Template>]
+# list templates
+account.templates
+=> [#<Docusigner::Template>, #<Docusigner::Template>]
+```
 
 #### Create an envelope
 
-  envelope = Docusigner::Envelope.new({
-    :account_id => 1234,
-    :emailSubject => "Fee Agreement",
-      :emailBlurb => "Please sign the attached document"
-      :recipients => {
-        :signers => [
-          {
-            :email => "signer@gmail.com",
-            :name => "Bob Smith",
-            :recipientId => 1,
-            :clientUserId => 123, # if you want to do 
-            :tabs => {
-              # can add tabs here
-            },
+```
+envelope = Docusigner::Envelope.new({
+  :account_id => 1234,
+  :emailSubject => "Fee Agreement",
+  :emailBlurb => "Please sign the attached document"
+  :recipients => {
+    :signers => [
+      {
+        :email => "signer@gmail.com",
+        :name => "Bob Smith",
+        :recipientId => 1,
+        :clientUserId => 123, # if you want to do 
+        :tabs => {
+          # can add tabs here
+        },
       }
-        ]
-      },
-      :documents => [
-        {
-          :name => "Fee Agreement",
-          :documentId => 333,
-        }
-      ],
-      :status => Docusigner::Envelope::Status::SENT
-  })
-  envelope.add_document(File.open("/path/to/document.pdf"), 333)
-  envelope.save
-  
+    ]
+  },
+  :documents => [
+    {
+      :name => "Fee Agreement",
+      :documentId => 333,
+    }
+  ],
+  :status => Docusigner::Envelope::Status::SENT
+})
+envelope.add_document(File.open("/path/to/document.pdf"), 333)
+envelope.save
+```
+
 For the most part, the complex data structures expected as parameters can be expressed with nested hashes when creating elements.
 
 ## Contributing

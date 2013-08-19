@@ -4,6 +4,7 @@ title:  "ActsAsExpirable"
 date:   2012-10-01 16:12:32
 tags:   active-record ruby
 category: project
+github: acts_as_expirable
 ---
 
 `acts_as_expirable` is an ActiveRecord mixin that enables simple handling of expiring records. It gives you `expired` and `unexpired` scopes as well as global handling of all expirable classes.
