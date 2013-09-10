@@ -2,7 +2,7 @@
 layout: post
 title:  "CacheDebugging"
 date:   2013-09-10 14:14:00
-tags:   jquery plugin
+tags:   ruby rails
 category: project
 github: cache_debugging
 ---
